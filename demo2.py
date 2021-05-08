@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as pd 
 import numpy as np 
 import matplotlib.pyplot as plt
-
+import seaborn as sns
+import plotly.graph_objects as go
+import plotly.express as px
+from plotly.subplots import make_subplots
+import plotly.tools as tls
 
 df = st.cache(pd.read_csv)("FederalBudgetShares1941_2020.csv")
 is_check = st.checkbox("Display Data")
@@ -20,6 +24,20 @@ category_data_is_check = st.checkbox("Display the data of selected category")
 if category_data_is_check:
     st.write(two_category_data)
 
+df2 = df[df.columns[1:]].sum(axis=0)
+rolling_windows = df2.rolling(5, min_periods=1)
+rolling_mean = rolling_windows.mean()
+#  print(rolling_mean)
+
+fig = plt.figure(figsize=(15,8))
+sns.barplot(df.columns[1:],df[df.columns[1:]].sum(axis=0))
+plt.plot(df.columns[1:], rolling_mean, color='red',label='moving average')
+plt.xticks(rotation='vertical')
+# st.pyplot()
+st.write(fig)
+# tls.mpl_to_plotly(fig)
+# st.write(fig)
+# st.plotly_chart(fig, use_container_width=True)
 
 
 # z = df.transpose().iloc[1:]
