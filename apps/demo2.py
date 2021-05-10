@@ -80,3 +80,9 @@ def app():
         fig2.add_trace(go.Scatter(x=df['Category'],y=df[i],name=str(i),line=dict(width=4)))
         j=j+1
     st.plotly_chart(fig2, use_container_width=True)
+
+    variables = st.selectbox("Enter the year", df.columns)
+    st.write("You selected these variables", variables)
+    
+    fig6 = px.pie(df, values=str(variables), names='Category')
+    st.plotly_chart(fig6)
