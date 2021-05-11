@@ -10,7 +10,7 @@ import plotly.tools as tls
 
 
 def app():
-    df = st.cache(pd.read_csv)("FederalBudgetShares1941_2020.csv")
+    df = st.cache(pd.read_csv)("Datasets/FederalBudgetShares1941_2020.csv")
     is_check = st.checkbox("Display Data")
     if is_check:
         st.write(df)
