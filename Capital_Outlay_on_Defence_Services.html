@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Capital Outlay on Defence Services", "label": "Capital Outlay on Defence Services", "shape": "dot", "size": 10}, {"id": "Total Land-Army", "label": "Total Land-Army", "shape": "dot", "size": 10}, {"id": "Total Construction Works-Army", "label": "Total Construction Works-Army", "shape": "dot", "size": 10}, {"id": "Total Aircrafts and Aeroengines-Army", "label": "Total Aircrafts and Aeroengines-Army", "shape": "dot", "size": 10}, {"id": "Total Heavy and Medium Vehicles", "label": "Total Heavy and Medium Vehicles", "shape": "dot", "size": 10}, {"id": "Total Other equipment-Army", "label": "Total Other equipment-Army", "shape": "dot", "size": 10}, {"id": "Total Rolling Stock", "label": "Total Rolling Stock", "shape": "dot", "size": 10}, {"id": "Total Rashtriya Rifles", "label": "Total Rashtriya Rifles", "shape": "dot", "size": 10}, {"id": "Total National Cadet Corps", "label": "Total National Cadet Corps", "shape": "dot", "size": 10}, {"id": "Total Ex-Servicemen Contributory Health Scheme", "label": "Total Ex-Servicemen Contributory Health Scheme", "shape": "dot", "size": 10}, {"id": "Total Military Farms", "label": "Total Military Farms", "shape": "dot", "size": 10}, {"id": "Total Land-Navy", "label": "Total Land-Navy", "shape": "dot", "size": 10}, {"id": "Total Construction Works-Navy", "label": "Total Construction Works-Navy", "shape": "dot", "size": 10}, {"id": "Total Aircrafts and Aeroengines", "label": "Total Aircrafts and Aeroengines", "shape": "dot", "size": 10}, {"id": "Total Other equipment-Navy", "label": "Total Other equipment-Navy", "shape": "dot", "size": 10}, {"id": "Total Naval Fleet", "label": "Total Naval Fleet", "shape": "dot", "size": 10}, {"id": "Total Naval Dockyard/projects", "label": "Total Naval Dockyard/projects", "shape": "dot", "size": 10}, {"id": "Total Joint Staff", "label": "Total Joint Staff", "shape": "dot", "size": 10}, {"id": "Total Land-Air Force", "label": "Total Land-Air Force", "shape": "dot", "size": 10}, {"id": "Total Construction Works-Air Force", "label": "Total Construction Works-Air Force", "shape": "dot", "size": 10}, {"id": "Total Aircrafts and Aeroengines-Air Force", "label": "Total Aircrafts and Aeroengines-Air Force", "shape": "dot", "size": 10}, {"id": "Total Heavy and Medium Vehicles-Air Force", "label": "Total Heavy and Medium Vehicles-Air Force", "shape": "dot", "size": 10}, {"id": "Total Other equipment-Air Force", "label": "Total Other equipment-Air Force", "shape": "dot", "size": 10}, {"id": "Total Special Projects", "label": "Total Special Projects", "shape": "dot", "size": 10}, {"id": "Total Defence Ordnance Factories", "label": "Total Defence Ordnance Factories", "shape": "dot", "size": 10}, {"id": "Total Research  and Development", "label": "Total Research  and Development", "shape": "dot", "size": 10}, {"id": "Total Inspection - Director General Quality Audit (DGQA)", "label": "Total Inspection - Director General Quality Audit (DGQA)", "shape": "dot", "size": 10}, {"id": "Total Projects of the Army", "label": "Total Projects of the Army", "shape": "dot", "size": 10}, {"id": "Total Projects of the Air Force", "label": "Total Projects of the Air Force", "shape": "dot", "size": 10}, {"id": "Total Capital Outlay on Defence Services", "label": "Total Capital Outlay on Defence Services", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"Budget 2019-2020 Total": "290.83", "from": "Capital Outlay on Defence Services", "to": "Total Land-Army", "weight": 1}, {"Budget 2019-2020 Total": "6181.18", "from": "Capital Outlay on Defence Services", "to": "Total Construction Works-Army", "weight": 1}, {"Budget 2019-2020 Total": "2115.43", "from": "Capital Outlay on Defence Services", "to": "Total Aircrafts and Aeroengines-Army", "weight": 1}, {"Budget 2019-2020 Total": "45", "from": "Capital Outlay on Defence Services", "to": "Total Heavy and Medium Vehicles", "weight": 1}, {"Budget 2019-2020 Total": "18562.15", "from": "Capital Outlay on Defence Services", "to": "Total Other equipment-Army", "weight": 1}, {"Budget 2019-2020 Total": "50", "from": "Capital Outlay on Defence Services", "to": "Total Rolling Stock", "weight": 1}, {"Budget 2019-2020 Total": "95", "from": "Capital Outlay on Defence Services", "to": "Total Rashtriya Rifles", "weight": 1}, {"Budget 2019-2020 Total": "24.64", "from": "Capital Outlay on Defence Services", "to": "Total National Cadet Corps", "weight": 1}, {"Budget 2019-2020 Total": "13.97", "from": "Capital Outlay on Defence Services", "to": "Total Ex-Servicemen Contributory Health Scheme", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Capital Outlay on Defence Services", "to": "Total Military Farms", "weight": 1}, {"Budget 2019-2020 Total": "50.53", "from": "Capital Outlay on Defence Services", "to": "Total Land-Navy", "weight": 1}, {"Budget 2019-2020 Total": "1000", "from": "Capital Outlay on Defence Services", "to": "Total Construction Works-Navy", "weight": 1}, {"Budget 2019-2020 Total": "2400", "from": "Capital Outlay on Defence Services", "to": "Total Aircrafts and Aeroengines", "weight": 1}, {"Budget 2019-2020 Total": "3500", "from": "Capital Outlay on Defence Services", "to": "Total Other equipment-Navy", "weight": 1}, {"Budget 2019-2020 Total": "12182", "from": "Capital Outlay on Defence Services", "to": "Total Naval Fleet", "weight": 1}, {"Budget 2019-2020 Total": "3050", "from": "Capital Outlay on Defence Services", "to": "Total Naval Dockyard/projects", "weight": 1}, {"Budget 2019-2020 Total": "928.9", "from": "Capital Outlay on Defence Services", "to": "Total Joint Staff", "weight": 1}, {"Budget 2019-2020 Total": "70", "from": "Capital Outlay on Defence Services", "to": "Total Land-Air Force", "weight": 1}, {"Budget 2019-2020 Total": "1837.3", "from": "Capital Outlay on Defence Services", "to": "Total Construction Works-Air Force", "weight": 1}, {"Budget 2019-2020 Total": "24807.19", "from": "Capital Outlay on Defence Services", "to": "Total Aircrafts and Aeroengines-Air Force", "weight": 1}, {"Budget 2019-2020 Total": "110", "from": "Capital Outlay on Defence Services", "to": "Total Heavy and Medium Vehicles-Air Force", "weight": 1}, {"Budget 2019-2020 Total": "11448.15", "from": "Capital Outlay on Defence Services", "to": "Total Other equipment-Air Force", "weight": 1}, {"Budget 2019-2020 Total": "1030", "from": "Capital Outlay on Defence Services", "to": "Total Special Projects", "weight": 1}, {"Budget 2019-2020 Total": "884.05", "from": "Capital Outlay on Defence Services", "to": "Total Defence Ordnance Factories", "weight": 1}, {"Budget 2019-2020 Total": "10484.43", "from": "Capital Outlay on Defence Services", "to": "Total Research  and Development", "weight": 1}, {"Budget 2019-2020 Total": "10.96", "from": "Capital Outlay on Defence Services", "to": "Total Inspection - Director General Quality Audit (DGQA)", "weight": 1}, {"Budget 2019-2020 Total": "50", "from": "Capital Outlay on Defence Services", "to": "Total Projects of the Army", "weight": 1}, {"Budget 2019-2020 Total": "44.55", "from": "Capital Outlay on Defence Services", "to": "Total Projects of the Air Force", "weight": 1}, {"Budget 2019-2020 Total": "103394.31", "from": "Capital Outlay on Defence Services", "to": "Total Capital Outlay on Defence Services", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

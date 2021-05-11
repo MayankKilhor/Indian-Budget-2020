@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Andaman and Nicobar Islands", "label": "Andaman and Nicobar Islands", "shape": "dot", "size": 10}, {"id": "Secretariat", "label": "Secretariat", "shape": "dot", "size": 10}, {"id": "Other Establishment", "label": "Other Establishment", "shape": "dot", "size": 10}, {"id": "Schemes of UT", "label": "Schemes of UT", "shape": "dot", "size": 10}, {"id": "UT\u0027s Supplement to Centrally Sponsored Schemes", "label": "UT\u0027s Supplement to Centrally Sponsored Schemes", "shape": "dot", "size": 10}, {"id": "Tribal Area Component", "label": "Tribal Area Component", "shape": "dot", "size": 10}, {"id": "Grantee / Other Bodies", "label": "Grantee / Other Bodies", "shape": "dot", "size": 10}, {"id": "Other Expenditure of UT", "label": "Other Expenditure of UT", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"Budget 2019-2020 Total": "57.75", "from": "Andaman and Nicobar Islands", "to": "Secretariat", "weight": 1}, {"Budget 2019-2020 Total": "2134.98", "from": "Andaman and Nicobar Islands", "to": "Other Establishment", "weight": 1}, {"Budget 2019-2020 Total": "0.87", "from": "Andaman and Nicobar Islands", "to": "Schemes of UT", "weight": 1}, {"Budget 2019-2020 Total": "15.34", "from": "Andaman and Nicobar Islands", "to": "UT\u0027s Supplement to Centrally Sponsored Schemes", "weight": 1}, {"Budget 2019-2020 Total": "251.22", "from": "Andaman and Nicobar Islands", "to": "Tribal Area Component", "weight": 1}, {"Budget 2019-2020 Total": "0.59", "from": "Andaman and Nicobar Islands", "to": "Grantee / Other Bodies", "weight": 1}, {"Budget 2019-2020 Total": "0.03", "from": "Andaman and Nicobar Islands", "to": "Other Expenditure of UT", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

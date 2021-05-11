@@ -28,23 +28,25 @@ def app():
     # source_code = HtmlFile.read() 
     # components.html(source_code, height = 500,width=700)
 
-    
+
     option2=st.selectbox('select graph',('Andaman and Nicobar Islands','Atomic Energy', 'Cabinet','Capital Outlay on Defence Services','Central Vigilance Commission','Chandigarh','Dadra and Nagar Haveli and Daman and Diu'))
-    netgraph.graph_func(option2)
+    physics=st.checkbox('add physics interactivity?')
+    netgraph.graph_func(option2,physics)
     HtmlFile = open("Graph.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
-    components.html(source_code, height = 500,width=500)
+    components.html(source_code, height = 900,width=500)
     
-    netgraph.graph2_func(option2)
+    physics1=st.checkbox('add physics interactivity?  ')
+    netgraph.graph2_func(option2,physics1)
     HtmlFile = open("Graph2.html", 'r', encoding='utf-8')
     source_code2 = HtmlFile.read() 
-    components.html(source_code2, height = 500,width=900)
+    components.html(source_code2, height = 900,width=900)
     
     # option=st.selectbox('select graph',('Andaman and Nicobar Islands','Atomic Energy', 'Cabinet','Capital Outlay on Defence Services','Central Vigilance Commission','Chandigarh','Dadra and Nagar Haveli and Daman and Diu'))
-    # physics=st.checkbox('add physics interactivity?')
+    # 
 
     # netgraph.Andaman_func(physics)
-
+physics=st.checkbox('add physics interactivity?')
     # # Andaman and Nicobar Islands
     # if option=='Andaman and Nicobar Islands':
     #     HtmlFile = open("Andaman_and_Nicobar_Islands.html", 'r', encoding='utf-8')
