@@ -11,7 +11,7 @@ df = st.cache(pd.read_csv)("Datasets/Expenditure.csv")
 
 import pyvis
 
-def graph_func(option2,physics):
+def graph_func(option2):
     df1 = df[df['Ministries/Departments']==str(option2)]
     G = nx.from_pandas_edgelist(df1, 
                             source = 'Ministries/Departments',
@@ -25,7 +25,7 @@ def graph_func(option2,physics):
         nt.show_buttons(filter_=['physics'])
     nt.show("Graph.html")
 
-def graph2_func(option2,physics1):
+def graph2_func(option2):
     df1 = df[df['Ministries/Departments']==str(option2)]
     G = nx.from_pandas_edgelist(df1, 
                             source = 'Ministries/Departments',
