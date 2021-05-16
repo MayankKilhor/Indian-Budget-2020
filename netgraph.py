@@ -1,10 +1,10 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from networkx.algorithms.traversal.depth_first_search import dfs_edges
-from pyvis import physics
+# from pyvis import physics
 from pyvis.network import Network
 import pandas as pd
-from pyvis.physics import Physics
+# from pyvis.physics import Physics
 import streamlit as st
 
 df = st.cache(pd.read_csv)("Datasets/Expenditure.csv")
