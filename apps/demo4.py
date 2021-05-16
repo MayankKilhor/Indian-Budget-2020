@@ -6,7 +6,7 @@ import netgraph
 import heatmap
 
 def app():
-    df = st.cache(pd.read_csv)("Datasets/Expenditure.csv")
+    df = pd.read_csv("Datasets/Expenditure.csv")
     is_check = st.checkbox("Display Data")
     if is_check:
         st.write(df)
@@ -22,7 +22,7 @@ def app():
     if category_data_is_check:
         st.write(two_category_data)
     
-    # physics1=st.checkbox('add physics interactivity?')
+
     # netgraph.All_func(physics1)
     # HtmlFile = open("All.html", 'r', encoding='utf-8')
     # source_code = HtmlFile.read() 
@@ -36,14 +36,12 @@ def app():
     source_code = HtmlFile.read() 
     components.html(source_code, height = 500,width=500)
     
-    # physics1=st.checkbox('add physics interactivity?  ')
     netgraph.graph2_func(option)
     HtmlFile = open("Graph2.html", 'r', encoding='utf-8')
     source_code2 = HtmlFile.read() 
     components.html(source_code2, height = 500,width=500)
 
-    option2=st.selectbox('select graph',('Andaman and Nicobar Islands','Atomic Energy', 'Cabinet','Capital Outlay on Defence Services','Central Vigilance Commission','Chandigarh','Dadra and Nagar Haveli and Daman and Diu'))
-    heatmap.graph_func(option2)
+    heatmap.graph_func(option)
     
 
     
