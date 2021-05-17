@@ -1,23 +1,26 @@
+import numpy as np
+import pandas as pd
 import streamlit as st
 
+from PIL import Image
+from newspaper import Article
+import plotly.express as px
+from operator import itemgetter
+import math
+import nltk
+from nltk import tokenize
+from nltk.corpus import stopwords
+# from nltk.tokenize import word_tokenize
+
 def app():
-    from newspaper import Article
     article = Article("https://www.indiatoday.in/business/budget-2020/story/full-text-of-budget-2020-speech-by-finance-minister-nirmala-sitharaman-1642337-2020-02-01#:~:text=Hon'ble%20Speaker%2C,for%20the%20year%202020%2D2021.&text=In%20May%202019%2C%20Prime%20Minister,with%20all%20humility%20and%20dedication.")
     article.download()
     article.parse()
-    # st.write(article.text)
-    # from wordcloud import WordCloud
-    import matplotlib.pyplot as plt
-    from PIL import Image
-    import numpy as np
-    import pandas as pd
-    mask2 = Image.open('map.jpg')
-    img = Image.open('wordcloud.png')
-    mask = np.array(mask2)
+
+    img = Image.open('wordcloud/wordcloud.png')
+
     
     st.image(img)
-
-    import plotly.express as px
 
     def word_count(sentence):
         translate = sentence.maketrans({char: None for char in "'.,:*!"})
@@ -33,16 +36,14 @@ def app():
     df = pd.Series(word_counter).to_frame()
     df.reset_index(level=0, inplace=True)
     df.columns = ['Word','WordCount']
-    from nltk import tokenize
-    from operator import itemgetter
-    import math
-    import nltk
+    
+
 
     nltk.download('punkt')
-    from nltk.corpus import stopwords
+
     nltk.download('stopwords')
 
-    from nltk.tokenize import word_tokenize
+
     
     stop_words = set(stopwords.words('english'))
 
@@ -93,11 +94,4 @@ def app():
     df1 = df1.drop([1070,1444], axis=0)
     fig = px.bar(df1, x='Word', y='WordCount', color='WordCount')
     st.plotly_chart(fig)
-    # wordcloud = WordCloud(width = 3000, height = 2000, random_state=1, background_color='white', collocations=False, stopwords = STOPWORDS, mask=mask).generate(article.text)
 
-    # fig= plt.figure(figsize=(10,10), facecolor="k")
-    # plt.axis("off")
-    # plt.tight_layout(pad=0)
-    # plt.imshow(wordcloud, interpolation='bilinear')
-    # # plt.show()
-    # st.write(fig)

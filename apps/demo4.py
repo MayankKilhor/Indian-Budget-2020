@@ -2,9 +2,9 @@ import numpy as np
 import pandas as pd
 import streamlit as st 
 import streamlit.components.v1 as components
-import netgraph
-import heatmap
-import bubblechart
+from apps import netgraph
+from apps import heatmap
+from apps import bubblechart
 
 def app():
     df = pd.read_csv("Datasets/Expenditure.csv")
@@ -31,7 +31,7 @@ def app():
 
 
     option=st.selectbox('select graph',('Andaman and Nicobar Islands','Atomic Energy', 'Cabinet','Capital Outlay on Defence Services','Central Vigilance Commission','Chandigarh','Dadra and Nagar Haveli and Daman and Diu'))
-    # physics=st.checkbox('add physics interactivity?')
+
     netgraph.graph_func(option)
     HtmlFile = open("Graph.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 

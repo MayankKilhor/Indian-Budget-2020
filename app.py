@@ -1,6 +1,6 @@
 import streamlit as st
 from multiapp import MultiApp
-from apps import home, demo1, demo2, demo3, demo4, demo5 # import your app modules here
+from apps import home, demo1, demo2, demo3, demo4, demo5, demo6 # import your app modules here
 
 app = MultiApp()
 
@@ -19,5 +19,6 @@ app.add_app("Demo2", demo2.app)
 app.add_app("Demo3", demo3.app)
 app.add_app("Demo4", demo4.app)
 app.add_app("Demo5", demo5.app)
+app.add_app("Demo6", demo6.app)
 # The main app
 app.run()
