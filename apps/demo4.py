@@ -4,6 +4,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 import netgraph
 import heatmap
+import bubblechart
 
 def app():
     df = pd.read_csv("Datasets/Expenditure.csv")
@@ -43,5 +44,5 @@ def app():
 
     heatmap.graph_func(option)
     
-
+    bubblechart.func_app()
     

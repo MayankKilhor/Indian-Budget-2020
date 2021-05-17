@@ -41,7 +41,7 @@ def graph2_func(option2):
     nt.show("Graph2.html")
 
 def All_func(physics1):
-    G = nx.from_pandas_edgelist(df, 
+    G = nx.from_pandas_edgelist(df4, 
                             source = 'Head of Expenditure',
                             target ='Detailed Head of Expenditure',
                             edge_attr='Budget 2019-2020 Total')

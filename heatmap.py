@@ -9,6 +9,7 @@ df = pd.read_csv("Datasets/Expenditure.csv")
 df["Budget 2019-2020 Total"]= df["Budget 2019-2020 Total"].replace("...", "0.00")
 df['Budget 2019-2020 Total'] = pd.to_numeric(df['Budget 2019-2020 Total'])
 
+
 def graph_func(option2):
     data=df
     data = df[df['Ministries/Departments']==str(option2)]
