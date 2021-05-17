@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Dadra and Nagar Haveli and Daman and Diu", "label": "Dadra and Nagar Haveli and Daman and Diu", "shape": "dot", "size": 10}, {"id": "Total Secretariat - Dadra and Nagar Haveli", "label": "Total Secretariat - Dadra and Nagar Haveli", "shape": "dot", "size": 10}, {"id": "Total Secretariat - Daman and Diu", "label": "Total Secretariat - Daman and Diu", "shape": "dot", "size": 10}, {"id": "Total Secretariat - Dadra and Nagar Haveli and Daman and Diu", "label": "Total Secretariat - Dadra and Nagar Haveli and Daman and Diu", "shape": "dot", "size": 10}, {"id": "Total Other Establishment - Dadra and Nagar Haveli", "label": "Total Other Establishment - Dadra and Nagar Haveli", "shape": "dot", "size": 10}, {"id": "Total Other Establishment - Daman and Diu", "label": "Total Other Establishment - Daman and Diu", "shape": "dot", "size": 10}, {"id": "Total Other Establishment - Dadra and Nagar Haveli and Daman and Diu", "label": "Total Other Establishment - Dadra and Nagar Haveli and Daman and Diu", "shape": "dot", "size": 10}, {"id": "Welfare of Scheduled Caste/Scheduled Tribes", "label": "Welfare of Scheduled Caste/Scheduled Tribes", "shape": "dot", "size": 10}, {"id": "Relief on Account of Natural Calamities", "label": "Relief on Account of Natural Calamities", "shape": "dot", "size": 10}, {"id": "Police", "label": "Police", "shape": "dot", "size": 10}, {"id": "Agriculture and Allied Activities", "label": "Agriculture and Allied Activities", "shape": "dot", "size": 10}, {"id": "Power", "label": "Power", "shape": "dot", "size": 10}, {"id": "Forest and Wildlife", "label": "Forest and Wildlife", "shape": "dot", "size": 10}, {"id": "Education", "label": "Education", "shape": "dot", "size": 10}, {"id": "Health", "label": "Health", "shape": "dot", "size": 10}, {"id": "Sports", "label": "Sports", "shape": "dot", "size": 10}, {"id": "Tourism", "label": "Tourism", "shape": "dot", "size": 10}, {"id": "Urban Development", "label": "Urban Development", "shape": "dot", "size": 10}, {"id": "Welfare of Widows/Destitute Women", "label": "Welfare of Widows/Destitute Women", "shape": "dot", "size": 10}, {"id": "Village and Small Industries", "label": "Village and Small Industries", "shape": "dot", "size": 10}, {"id": "Roads and Bridges", "label": "Roads and Bridges", "shape": "dot", "size": 10}, {"id": "Differently Abled and Aged", "label": "Differently Abled and Aged", "shape": "dot", "size": 10}, {"id": "Police Welfare", "label": "Police Welfare", "shape": "dot", "size": 10}, {"id": "Welfare of SCs, STs, OBCs and Minorities", "label": "Welfare of SCs, STs, OBCs and Minorities", "shape": "dot", "size": 10}, {"id": "Relief on account of Natural calamities", "label": "Relief on account of Natural calamities", "shape": "dot", "size": 10}, {"id": "Up-gradation of Fire Fighting Services", "label": "Up-gradation of Fire Fighting Services", "shape": "dot", "size": 10}, {"id": "Transmission and Distribution of Power", "label": "Transmission and Distribution of Power", "shape": "dot", "size": 10}, {"id": "Forests, Wildlife, Ecology and Environment", "label": "Forests, Wildlife, Ecology and Environment", "shape": "dot", "size": 10}, {"id": "Public Distribution System", "label": "Public Distribution System", "shape": "dot", "size": 10}, {"id": "Medical and Health", "label": "Medical and Health", "shape": "dot", "size": 10}, {"id": "Industrial Promotion", "label": "Industrial Promotion", "shape": "dot", "size": 10}, {"id": "Labour welfare", "label": "Labour welfare", "shape": "dot", "size": 10}, {"id": "Industrial Training Institutes", "label": "Industrial Training Institutes", "shape": "dot", "size": 10}, {"id": "Maintenance and repairs of Roads and Bridges", "label": "Maintenance and repairs of Roads and Bridges", "shape": "dot", "size": 10}, {"id": "Construction and Development of Ports and Light Houses", "label": "Construction and Development of Ports and Light Houses", "shape": "dot", "size": 10}, {"id": "Civil Aviation", "label": "Civil Aviation", "shape": "dot", "size": 10}, {"id": "Maintenance and repairs of Tourist Infrastructures", "label": "Maintenance and repairs of Tourist Infrastructures", "shape": "dot", "size": 10}, {"id": "Public Works", "label": "Public Works", "shape": "dot", "size": 10}, {"id": "Water Supply and Sanitation", "label": "Water Supply and Sanitation", "shape": "dot", "size": 10}, {"id": "Government Accommodation for General Pool", "label": "Government Accommodation for General Pool", "shape": "dot", "size": 10}, {"id": "Construction of Solid Waste Management facilities", "label": "Construction of Solid Waste Management facilities", "shape": "dot", "size": 10}, {"id": "Social Security", "label": "Social Security", "shape": "dot", "size": 10}, {"id": "New and Renewable Energy", "label": "New and Renewable Energy", "shape": "dot", "size": 10}, {"id": "Police Welfare Schemes", "label": "Police Welfare Schemes", "shape": "dot", "size": 10}, {"id": "Schemes for SCs, STs, OBCs and Minorities", "label": "Schemes for SCs, STs, OBCs and Minorities", "shape": "dot", "size": 10}, {"id": "Schemes for Agriculture and Allied Activities", "label": "Schemes for Agriculture and Allied Activities", "shape": "dot", "size": 10}, {"id": "Forests, Wildlife including Ecology and Environment", "label": "Forests, Wildlife including Ecology and Environment", "shape": "dot", "size": 10}, {"id": "Schemes under Medical and Health", "label": "Schemes under Medical and Health", "shape": "dot", "size": 10}, {"id": "Schemes under Education", "label": "Schemes under Education", "shape": "dot", "size": 10}, {"id": "Schemes for industrial promotion", "label": "Schemes for industrial promotion", "shape": "dot", "size": 10}, {"id": "Schemes related to Civil Aviation", "label": "Schemes related to Civil Aviation", "shape": "dot", "size": 10}, {"id": "Scheme for Tourism", "label": "Scheme for Tourism", "shape": "dot", "size": 10}, {"id": "Social Security Schemes", "label": "Social Security Schemes", "shape": "dot", "size": 10}, {"id": "Scheme for Development of Sport", "label": "Scheme for Development of Sport", "shape": "dot", "size": 10}, {"id": "Scheme for Differently Able and Aged", "label": "Scheme for Differently Able and Aged", "shape": "dot", "size": 10}, {"id": "Total UTs Supplement to Centrally Sponsored Schemes - Daman and Diu", "label": "Total UTs Supplement to Centrally Sponsored Schemes - Daman and Diu", "shape": "dot", "size": 10}, {"id": "Total UTs Supplement to Centrally Sponsored Schemes - Dadra and Nagar Haveli and Daman and Diu", "label": "Total UTs Supplement to Centrally Sponsored Schemes - Dadra and Nagar Haveli and Daman and Diu", "shape": "dot", "size": 10}, {"id": "Total Tribal Area Component - Daman and Diu", "label": "Total Tribal Area Component - Daman and Diu", "shape": "dot", "size": 10}, {"id": "Total Tribal Area Component - Dadra and Nagar Haveli and Daman and Diu", "label": "Total Tribal Area Component - Dadra and Nagar Haveli and Daman and Diu", "shape": "dot", "size": 10}, {"id": "Grants to Zilla Parishad/District Level Panchayats", "label": "Grants to Zilla Parishad/District Level Panchayats", "shape": "dot", "size": 10}, {"id": "Grants to Silvassa Municipal Council", "label": "Grants to Silvassa Municipal Council", "shape": "dot", "size": 10}, {"id": "Grant to other Autonomous and Grantee bodies", "label": "Grant to other Autonomous and Grantee bodies", "shape": "dot", "size": 10}, {"id": "Grants to District Panchayats and Village Panchayats of Daman and Diu", "label": "Grants to District Panchayats and Village Panchayats of Daman and Diu", "shape": "dot", "size": 10}, {"id": "Grants to Municipal Councils of Daman and Diu", "label": "Grants to Municipal Councils of Daman and Diu", "shape": "dot", "size": 10}, {"id": "Other Grantee Bodies", "label": "Other Grantee Bodies", "shape": "dot", "size": 10}, {"id": "Grants to District Panchayats and Village Panchayats", "label": "Grants to District Panchayats and Village Panchayats", "shape": "dot", "size": 10}, {"id": "Grants to Municipal Councils", "label": "Grants to Municipal Councils", "shape": "dot", "size": 10}, {"id": "Total Other Expenditure of UT - Dadra and Nagar Haveli", "label": "Total Other Expenditure of UT - Dadra and Nagar Haveli", "shape": "dot", "size": 10}, {"id": "Total Other Expenditure of UT - Daman and Diu", "label": "Total Other Expenditure of UT - Daman and Diu", "shape": "dot", "size": 10}, {"id": "Total Other Expenditure of UT - Dadra and Nagar Haveli and Daman and Diu", "label": "Total Other Expenditure of UT - Dadra and Nagar Haveli and Daman and Diu", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"Budget 2019-2020 Total": "4.44", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Secretariat - Dadra and Nagar Haveli", "weight": 1}, {"Budget 2019-2020 Total": "14.7", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Secretariat - Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Secretariat - Dadra and Nagar Haveli and Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "284.39", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Other Establishment - Dadra and Nagar Haveli", "weight": 1}, {"Budget 2019-2020 Total": "251.64", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Other Establishment - Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Other Establishment - Dadra and Nagar Haveli and Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "0.7", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Welfare of Scheduled Caste/Scheduled Tribes", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Relief on Account of Natural Calamities", "weight": 1}, {"Budget 2019-2020 Total": "5.74", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Police", "weight": 1}, {"Budget 2019-2020 Total": "5.2", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Agriculture and Allied Activities", "weight": 1}, {"Budget 2019-2020 Total": "28.03", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Power", "weight": 1}, {"Budget 2019-2020 Total": "20.14", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Forest and Wildlife", "weight": 1}, {"Budget 2019-2020 Total": "62.99", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Education", "weight": 1}, {"Budget 2019-2020 Total": "119.32", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Health", "weight": 1}, {"Budget 2019-2020 Total": "9.9", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Sports", "weight": 1}, {"Budget 2019-2020 Total": "4.4", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Tourism", "weight": 1}, {"Budget 2019-2020 Total": "31.23", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Urban Development", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Welfare of Widows/Destitute Women", "weight": 1}, {"Budget 2019-2020 Total": "10.48", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Village and Small Industries", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Roads and Bridges", "weight": 1}, {"Budget 2019-2020 Total": "0.51", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Differently Abled and Aged", "weight": 1}, {"Budget 2019-2020 Total": "2.75", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Police Welfare", "weight": 1}, {"Budget 2019-2020 Total": "0.58", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Welfare of SCs, STs, OBCs and Minorities", "weight": 1}, {"Budget 2019-2020 Total": "0.81", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Relief on account of Natural calamities", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Up-gradation of Fire Fighting Services", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Transmission and Distribution of Power", "weight": 1}, {"Budget 2019-2020 Total": "3.21", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Forests, Wildlife, Ecology and Environment", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Public Distribution System", "weight": 1}, {"Budget 2019-2020 Total": "33.88", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Medical and Health", "weight": 1}, {"Budget 2019-2020 Total": "5.1", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Industrial Promotion", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Labour welfare", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Industrial Training Institutes", "weight": 1}, {"Budget 2019-2020 Total": "80.11", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Maintenance and repairs of Roads and Bridges", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Construction and Development of Ports and Light Houses", "weight": 1}, {"Budget 2019-2020 Total": "18.69", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Civil Aviation", "weight": 1}, {"Budget 2019-2020 Total": "42.04", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Maintenance and repairs of Tourist Infrastructures", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Public Works", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Water Supply and Sanitation", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Government Accommodation for General Pool", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Construction of Solid Waste Management facilities", "weight": 1}, {"Budget 2019-2020 Total": "0.3", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Social Security", "weight": 1}, {"Budget 2019-2020 Total": "3", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "New and Renewable Energy", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Police Welfare Schemes", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Schemes for SCs, STs, OBCs and Minorities", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Schemes for Agriculture and Allied Activities", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Forests, Wildlife including Ecology and Environment", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Schemes under Medical and Health", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Schemes under Education", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Schemes for industrial promotion", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Schemes related to Civil Aviation", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Scheme for Tourism", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Social Security Schemes", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Scheme for Development of Sport", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Scheme for Differently Able and Aged", "weight": 1}, {"Budget 2019-2020 Total": "22.43", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total UTs Supplement to Centrally Sponsored Schemes - Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total UTs Supplement to Centrally Sponsored Schemes - Dadra and Nagar Haveli and Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "28.25", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Tribal Area Component - Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Tribal Area Component - Dadra and Nagar Haveli and Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "350.93", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Grants to Zilla Parishad/District Level Panchayats", "weight": 1}, {"Budget 2019-2020 Total": "129.5", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Grants to Silvassa Municipal Council", "weight": 1}, {"Budget 2019-2020 Total": "9.07", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Grant to other Autonomous and Grantee bodies", "weight": 1}, {"Budget 2019-2020 Total": "64.96", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Grants to District Panchayats and Village Panchayats of Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "32.36", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Grants to Municipal Councils of Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Other Grantee Bodies", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Grants to District Panchayats and Village Panchayats", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Grants to Municipal Councils", "weight": 1}, {"Budget 2019-2020 Total": "15.21", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Other Expenditure of UT - Dadra and Nagar Haveli", "weight": 1}, {"Budget 2019-2020 Total": "3.49", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Other Expenditure of UT - Daman and Diu", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Dadra and Nagar Haveli and Daman and Diu", "to": "Total Other Expenditure of UT - Dadra and Nagar Haveli and Daman and Diu", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

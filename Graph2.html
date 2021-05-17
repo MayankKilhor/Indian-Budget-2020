@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Atomic Energy", "label": "Atomic Energy", "shape": "dot", "size": 10}, {"id": "Total Secretariat", "label": "Total Secretariat", "shape": "dot", "size": 10}, {"id": "Total Atomic Energy Regulatory Board", "label": "Total Atomic Energy Regulatory Board", "shape": "dot", "size": 10}, {"id": "Bhabha Atomic Research Centre", "label": "Bhabha Atomic Research Centre", "shape": "dot", "size": 10}, {"id": "Indira Gandhi Centre for Atomic Research, Kalpakkam", "label": "Indira Gandhi Centre for Atomic Research, Kalpakkam", "shape": "dot", "size": 10}, {"id": "Raja Ramana Centre for Advanced Technology, Indore", "label": "Raja Ramana Centre for Advanced Technology, Indore", "shape": "dot", "size": 10}, {"id": "Variable Energy Cyclotrone Centre, Kolkata", "label": "Variable Energy Cyclotrone Centre, Kolkata", "shape": "dot", "size": 10}, {"id": "Atomic Minerals Directorate for Exploration and Research, Hyderabad", "label": "Atomic Minerals Directorate for Exploration and Research, Hyderabad", "shape": "dot", "size": 10}, {"id": "Total Fuel Cycle Facility (Nuclear Regulatory Board)", "label": "Total Fuel Cycle Facility (Nuclear Regulatory Board)", "shape": "dot", "size": 10}, {"id": "Total Service Units", "label": "Total Service Units", "shape": "dot", "size": 10}, {"id": "Total Board of Radiation and Isotope Technology (BRIT)", "label": "Total Board of Radiation and Isotope Technology (BRIT)", "shape": "dot", "size": 10}, {"id": "Total Management Services Group", "label": "Total Management Services Group", "shape": "dot", "size": 10}, {"id": "Gross Budgetary Support", "label": "Gross Budgetary Support", "shape": "dot", "size": 10}, {"id": "Less Receipts", "label": "Less Receipts", "shape": "dot", "size": 10}, {"id": "Less Recoveries", "label": "Less Recoveries", "shape": "dot", "size": 10}, {"id": "Less - Recovery", "label": "Less - Recovery", "shape": "dot", "size": 10}, {"id": "Total R and D Basic Science and Engineering", "label": "Total R and D Basic Science and Engineering", "shape": "dot", "size": 10}, {"id": "Total R and D for Fast Reactor Science and Technology", "label": "Total R and D for Fast Reactor Science and Technology", "shape": "dot", "size": 10}, {"id": "Total Advanced Technologies for Laser, Synchrotron and Accelerator", "label": "Total Advanced Technologies for Laser, Synchrotron and Accelerator", "shape": "dot", "size": 10}, {"id": "Total R and D in Exploration and Mining", "label": "Total R and D in Exploration and Mining", "shape": "dot", "size": 10}, {"id": "Total Grants to other Institutions", "label": "Total Grants to other Institutions", "shape": "dot", "size": 10}, {"id": "Total Backend Fuel Cycle Projects", "label": "Total Backend Fuel Cycle Projects", "shape": "dot", "size": 10}, {"id": "Total Housing Projects", "label": "Total Housing Projects", "shape": "dot", "size": 10}, {"id": "Total Neighbourhood Development Project (in Kudankulam)", "label": "Total Neighbourhood Development Project (in Kudankulam)", "shape": "dot", "size": 10}, {"id": "Total Heavy Water Board", "label": "Total Heavy Water Board", "shape": "dot", "size": 10}, {"id": "Total Radiation and Isotopes Project", "label": "Total Radiation and Isotopes Project", "shape": "dot", "size": 10}, {"id": "Total Nuclear Power Projects", "label": "Total Nuclear Power Projects", "shape": "dot", "size": 10}, {"id": "Total Nuclear Fuel Projects", "label": "Total Nuclear Fuel Projects", "shape": "dot", "size": 10}, {"id": "Total Atomic Energy Regulatory Board Expansion Project", "label": "Total Atomic Energy Regulatory Board Expansion Project", "shape": "dot", "size": 10}, {"id": "Total Advanced Technology for Acclerator", "label": "Total Advanced Technology for Acclerator", "shape": "dot", "size": 10}, {"id": "Total Research and Development Projects", "label": "Total Research and Development Projects", "shape": "dot", "size": 10}, {"id": "Total Industries and Material Projects", "label": "Total Industries and Material Projects", "shape": "dot", "size": 10}, {"id": "Total Fuel Cycle Projects (Fast Reactor Fuel Cycle Fascility)", "label": "Total Fuel Cycle Projects (Fast Reactor Fuel Cycle Fascility)", "shape": "dot", "size": 10}, {"id": "Total Other Autonomous Bodies", "label": "Total Other Autonomous Bodies", "shape": "dot", "size": 10}, {"id": "Total Nuclear Power Corporation of India Limited (NPCIL)", "label": "Total Nuclear Power Corporation of India Limited (NPCIL)", "shape": "dot", "size": 10}, {"id": "Total Uranium Corporation of India Limited", "label": "Total Uranium Corporation of India Limited", "shape": "dot", "size": 10}, {"id": "Total Bharatiya Nabhikiya Vidyut Nigam Limited (BHAVINI)", "label": "Total Bharatiya Nabhikiya Vidyut Nigam Limited (BHAVINI)", "shape": "dot", "size": 10}, {"id": "Total Contribution to International Atomic Energy Agency", "label": "Total Contribution to International Atomic Energy Agency", "shape": "dot", "size": 10}, {"id": "Total Power", "label": "Total Power", "shape": "dot", "size": 10}, {"id": "Total Industries", "label": "Total Industries", "shape": "dot", "size": 10}, {"id": "Total Atomic Energy Research", "label": "Total Atomic Energy Research", "shape": "dot", "size": 10}, {"id": "Total Secretariat-Economic Services", "label": "Total Secretariat-Economic Services", "shape": "dot", "size": 10}, {"id": "Total Capital Outlay on Power Projects", "label": "Total Capital Outlay on Power Projects", "shape": "dot", "size": 10}, {"id": "Total Capital Outlay on Atomic Energy Industries", "label": "Total Capital Outlay on Atomic Energy Industries", "shape": "dot", "size": 10}, {"id": "Total Capital Outlay on Atomic Energy Research", "label": "Total Capital Outlay on Atomic Energy Research", "shape": "dot", "size": 10}, {"id": "Total Loans for  Power Projects", "label": "Total Loans for  Power Projects", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"Budget 2019-2020 Total": "58.05", "from": "Atomic Energy", "to": "Total Secretariat", "weight": 1}, {"Budget 2019-2020 Total": "80", "from": "Atomic Energy", "to": "Total Atomic Energy Regulatory Board", "weight": 1}, {"Budget 2019-2020 Total": "2560.91", "from": "Atomic Energy", "to": "Bhabha Atomic Research Centre", "weight": 1}, {"Budget 2019-2020 Total": "496.67", "from": "Atomic Energy", "to": "Indira Gandhi Centre for Atomic Research, Kalpakkam", "weight": 1}, {"Budget 2019-2020 Total": "324.83", "from": "Atomic Energy", "to": "Raja Ramana Centre for Advanced Technology, Indore", "weight": 1}, {"Budget 2019-2020 Total": "121.94", "from": "Atomic Energy", "to": "Variable Energy Cyclotrone Centre, Kolkata", "weight": 1}, {"Budget 2019-2020 Total": "319.39", "from": "Atomic Energy", "to": "Atomic Minerals Directorate for Exploration and Research, Hyderabad", "weight": 1}, {"Budget 2019-2020 Total": "544.15", "from": "Atomic Energy", "to": "Total Fuel Cycle Facility (Nuclear Regulatory Board)", "weight": 1}, {"Budget 2019-2020 Total": "396.65", "from": "Atomic Energy", "to": "Total Service Units", "weight": 1}, {"Budget 2019-2020 Total": "97.85", "from": "Atomic Energy", "to": "Total Board of Radiation and Isotope Technology (BRIT)", "weight": 1}, {"Budget 2019-2020 Total": "0.7", "from": "Atomic Energy", "to": "Total Management Services Group", "weight": 1}, {"Budget 2019-2020 Total": "3122.06", "from": "Atomic Energy", "to": "Gross Budgetary Support", "weight": 1}, {"Budget 2019-2020 Total": "-2373.06", "from": "Atomic Energy", "to": "Less Receipts", "weight": 1}, {"Budget 2019-2020 Total": "-101.81", "from": "Atomic Energy", "to": "Less Recoveries", "weight": 1}, {"Budget 2019-2020 Total": "-1201", "from": "Atomic Energy", "to": "Less - Recovery", "weight": 1}, {"Budget 2019-2020 Total": "1320", "from": "Atomic Energy", "to": "Total R and D Basic Science and Engineering", "weight": 1}, {"Budget 2019-2020 Total": "271", "from": "Atomic Energy", "to": "Total R and D for Fast Reactor Science and Technology", "weight": 1}, {"Budget 2019-2020 Total": "150.99", "from": "Atomic Energy", "to": "Total Advanced Technologies for Laser, Synchrotron and Accelerator", "weight": 1}, {"Budget 2019-2020 Total": "138", "from": "Atomic Energy", "to": "Total R and D in Exploration and Mining", "weight": 1}, {"Budget 2019-2020 Total": "154", "from": "Atomic Energy", "to": "Total Grants to other Institutions", "weight": 1}, {"Budget 2019-2020 Total": "440", "from": "Atomic Energy", "to": "Total Backend Fuel Cycle Projects", "weight": 1}, {"Budget 2019-2020 Total": "169.01", "from": "Atomic Energy", "to": "Total Housing Projects", "weight": 1}, {"Budget 2019-2020 Total": "...", "from": "Atomic Energy", "to": "Total Neighbourhood Development Project (in Kudankulam)", "weight": 1}, {"Budget 2019-2020 Total": "53", "from": "Atomic Energy", "to": "Total Heavy Water Board", "weight": 1}, {"Budget 2019-2020 Total": "110", "from": "Atomic Energy", "to": "Total Radiation and Isotopes Project", "weight": 1}, {"Budget 2019-2020 Total": "110.42", "from": "Atomic Energy", "to": "Total Nuclear Power Projects", "weight": 1}, {"Budget 2019-2020 Total": "170", "from": "Atomic Energy", "to": "Total Nuclear Fuel Projects", "weight": 1}, {"Budget 2019-2020 Total": "40", "from": "Atomic Energy", "to": "Total Atomic Energy Regulatory Board Expansion Project", "weight": 1}, {"Budget 2019-2020 Total": "75", "from": "Atomic Energy", "to": "Total Advanced Technology for Acclerator", "weight": 1}, {"Budget 2019-2020 Total": "170", "from": "Atomic Energy", "to": "Total Research and Development Projects", "weight": 1}, {"Budget 2019-2020 Total": "65", "from": "Atomic Energy", "to": "Total Industries and Material Projects", "weight": 1}, {"Budget 2019-2020 Total": "750", "from": "Atomic Energy", "to": "Total Fuel Cycle Projects (Fast Reactor Fuel Cycle Fascility)", "weight": 1}, {"Budget 2019-2020 Total": "2449.84", "from": "Atomic Energy", "to": "Total Other Autonomous Bodies", "weight": 1}, {"Budget 2019-2020 Total": "3000", "from": "Atomic Energy", "to": "Total Nuclear Power Corporation of India Limited (NPCIL)", "weight": 1}, {"Budget 2019-2020 Total": "15", "from": "Atomic Energy", "to": "Total Uranium Corporation of India Limited", "weight": 1}, {"Budget 2019-2020 Total": "140", "from": "Atomic Energy", "to": "Total Bharatiya Nabhikiya Vidyut Nigam Limited (BHAVINI)", "weight": 1}, {"Budget 2019-2020 Total": "40", "from": "Atomic Energy", "to": "Total Contribution to International Atomic Energy Agency", "weight": 1}, {"Budget 2019-2020 Total": "874.12", "from": "Atomic Energy", "to": "Total Power", "weight": 1}, {"Budget 2019-2020 Total": "1622.64", "from": "Atomic Energy", "to": "Total Industries", "weight": 1}, {"Budget 2019-2020 Total": "6264.14", "from": "Atomic Energy", "to": "Total Atomic Energy Research", "weight": 1}, {"Budget 2019-2020 Total": "58.05", "from": "Atomic Energy", "to": "Total Secretariat-Economic Services", "weight": 1}, {"Budget 2019-2020 Total": "603.42", "from": "Atomic Energy", "to": "Total Capital Outlay on Power Projects", "weight": 1}, {"Budget 2019-2020 Total": "2964.14", "from": "Atomic Energy", "to": "Total Capital Outlay on Atomic Energy Industries", "weight": 1}, {"Budget 2019-2020 Total": "1939", "from": "Atomic Energy", "to": "Total Capital Outlay on Atomic Energy Research", "weight": 1}, {"Budget 2019-2020 Total": "2600", "from": "Atomic Energy", "to": "Total Loans for  Power Projects", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Chandigarh", "label": "Chandigarh", "shape": "dot", "size": 10}, {"id": "Total Secretariat", "label": "Total Secretariat", "shape": "dot", "size": 10}, {"id": "Total Other Establishment", "label": "Total Other Establishment", "shape": "dot", "size": 10}, {"id": "Police Housing and Allied works", "label": "Police Housing and Allied works", "shape": "dot", "size": 10}, {"id": "Development of Villages", "label": "Development of Villages", "shape": "dot", "size": 10}, {"id": "Power and Renewable Energy", "label": "Power and Renewable Energy", "shape": "dot", "size": 10}, {"id": "Forests, Wildlife, Ecology and Environment", "label": "Forests, Wildlife, Ecology and Environment", "shape": "dot", "size": 10}, {"id": "Health Services", "label": "Health Services", "shape": "dot", "size": 10}, {"id": "Education", "label": "Education", "shape": "dot", "size": 10}, {"id": "Welfare of Women and Children", "label": "Welfare of Women and Children", "shape": "dot", "size": 10}, {"id": "Art, Culture and Museum", "label": "Art, Culture and Museum", "shape": "dot", "size": 10}, {"id": "Khadi and Village Industries", "label": "Khadi and Village Industries", "shape": "dot", "size": 10}, {"id": "Road and Transport", "label": "Road and Transport", "shape": "dot", "size": 10}, {"id": "Govt- Housing", "label": "Govt- Housing", "shape": "dot", "size": 10}, {"id": "Urban Development", "label": "Urban Development", "shape": "dot", "size": 10}, {"id": "Welfare of Differently Abled and Aged", "label": "Welfare of Differently Abled and Aged", "shape": "dot", "size": 10}, {"id": "Other Schemes", "label": "Other Schemes", "shape": "dot", "size": 10}, {"id": "Total UT\u0027s Supplement to Centrally Sponsored Schemes", "label": "Total UT\u0027s Supplement to Centrally Sponsored Schemes", "shape": "dot", "size": 10}, {"id": "Total Grantee / Other Bodies", "label": "Total Grantee / Other Bodies", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"Budget 2019-2020 Total": "20.74", "from": "Chandigarh", "to": "Total Secretariat", "weight": 1}, {"Budget 2019-2020 Total": "2691.06", "from": "Chandigarh", "to": "Total Other Establishment", "weight": 1}, {"Budget 2019-2020 Total": "26", "from": "Chandigarh", "to": "Police Housing and Allied works", "weight": 1}, {"Budget 2019-2020 Total": "6.04", "from": "Chandigarh", "to": "Development of Villages", "weight": 1}, {"Budget 2019-2020 Total": "879.31", "from": "Chandigarh", "to": "Power and Renewable Energy", "weight": 1}, {"Budget 2019-2020 Total": "28.33", "from": "Chandigarh", "to": "Forests, Wildlife, Ecology and Environment", "weight": 1}, {"Budget 2019-2020 Total": "75.31", "from": "Chandigarh", "to": "Health Services", "weight": 1}, {"Budget 2019-2020 Total": "68.13", "from": "Chandigarh", "to": "Education", "weight": 1}, {"Budget 2019-2020 Total": "25.63", "from": "Chandigarh", "to": "Welfare of Women and Children", "weight": 1}, {"Budget 2019-2020 Total": "3.71", "from": "Chandigarh", "to": "Art, Culture and Museum", "weight": 1}, {"Budget 2019-2020 Total": "3.21", "from": "Chandigarh", "to": "Khadi and Village Industries", "weight": 1}, {"Budget 2019-2020 Total": "39.83", "from": "Chandigarh", "to": "Road and Transport", "weight": 1}, {"Budget 2019-2020 Total": "23.7", "from": "Chandigarh", "to": "Govt- Housing", "weight": 1}, {"Budget 2019-2020 Total": "117.04", "from": "Chandigarh", "to": "Urban Development", "weight": 1}, {"Budget 2019-2020 Total": "4.33", "from": "Chandigarh", "to": "Welfare of Differently Abled and Aged", "weight": 1}, {"Budget 2019-2020 Total": "87.29", "from": "Chandigarh", "to": "Other Schemes", "weight": 1}, {"Budget 2019-2020 Total": "12.13", "from": "Chandigarh", "to": "Total UT\u0027s Supplement to Centrally Sponsored Schemes", "weight": 1}, {"Budget 2019-2020 Total": "641.33", "from": "Chandigarh", "to": "Total Grantee / Other Bodies", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
