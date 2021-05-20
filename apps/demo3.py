@@ -29,7 +29,7 @@ def app():
                     
                     ## DATASET
 
-                    [link](https://www.indiatoday.in/business/budget-2020/story/full-text-of-budget-2020-speech-by-finance-minister-nirmala-sitharaman-1642337-2020-02-01#:~:text=Hon'ble%20Speaker%2C,for%20the%20year%202020%2D2021.&text=In%20May%202019%2C%20Prime%20Minister,with%20all%20humility%20and%20dedication)
+                    [`Link`](https://www.indiatoday.in/business/budget-2020/story/full-text-of-budget-2020-speech-by-finance-minister-nirmala-sitharaman-1642337-2020-02-01#:~:text=Hon'ble%20Speaker%2C,for%20the%20year%202020%2D2021.&text=In%20May%202019%2C%20Prime%20Minister,with%20all%20humility%20and%20dedication)
 
                     #####""")
     st.markdown("""
@@ -39,7 +39,7 @@ def app():
                 We extracted the complete text of her speech and did various visualizations on that.
 
 
-                ** _ Word Cloud _ ** - This word cloud helps to visualize and summarize all sorts of data which can be obtained from the Budget Speech. For better representation of the data and to make it more visually appealing, we also created a word cloud in the shape of the Indian Map.""")
+                ** _ `Word Cloud` _ ** - This word cloud helps to visualize and summarize all sorts of data which can be obtained from the Budget Speech. For better representation of the data and to make it more visually appealing, we also created a word cloud in the shape of the Indian Map.""")
     
     article = Article("https://www.indiatoday.in/business/budget-2020/story/full-text-of-budget-2020-speech-by-finance-minister-nirmala-sitharaman-1642337-2020-02-01#:~:text=Hon'ble%20Speaker%2C,for%20the%20year%202020%2D2021.&text=In%20May%202019%2C%20Prime%20Minister,with%20all%20humility%20and%20dedication.")
     article.download()
@@ -52,7 +52,7 @@ def app():
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Bar chart _ ** - We created a bar chart to show the most frequently used words in the Budget Speech. We see an extremely high usage of the word Tax.""")
+                ** _ `Bar chart` _ ** - We created a bar chart to show the most frequently used words in the Budget Speech. We see an extremely high usage of the word Tax.""")
     
 
     def word_count(sentence):

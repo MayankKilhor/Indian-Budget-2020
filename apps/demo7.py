@@ -9,16 +9,16 @@ def app():
                     # Module 6: Healthcare Budget  
                     #
                     ## Description
-                    The distribution of of Tax revenue in line with the Goods and Services Tax introduced in 2017 and fully implemented in 2018 gives a varied visualisation of the amount of economic zones in the country, how well the government over the years has managed to gain interest and tax revenue and future planning of development zones within states can be easily measured with this insight along with Custom duties levied as well as Union Excise duties while moving from state to state.
+                    The main reason for focusing on Healthcare budget is to better analyse how the government has been allocated budget for healthcare. Post Pandemic the economy had gone into a spiral with India noting first ever Quarterly fall and prediction of -9% decrement in the GDP, Hence to recover economy as well as making sure that India comes out stronger from the pandemic it is of utmost importance to see how well the Healthcare sector is doing and how 2021 budget shall be allocated funds in order to tackle the global pandemic situation.
+
                     
                     ## Inference
-                    ->   Basic duties which range from 3% up to 24% make the highest amount of cess that is levied on goods as well as essential products ranging over 1,00,000 Crore INR
+                    ->   Over the last three years 2018, 2019, 2020 we can observe that the budget allocation has incremented from 51,000 Crore INR to 62,000 Crore INR. A net increase of almost 10,000 Crore INR. This is however in contrast with the amount spent on the Education sector as well as the Transportation sector.
                     
-                    ->   The National Calamity Contingency sees the least amount of custom levied as it is a Branch that focuses on War time aid and National Disaster Recovery Plans, hence such goods are exempted from taxation.
+                    ->   A country of 135 Billion with the modern statistics showing that we have 1 Doctor for over 50 people is an alarming number.
                     
-                    ->   The Union levies excise duties on Crude Oil as India imports most of its oil from abroad and would be detrimental to the country if tax is levied on crude oil as it accounts for over 80% of energy and 97% of transportation needs.
+                    ->   Most of the Healthcare budget has been spent on acquisition of modern technology machines such as MRI machines, Few have been allocated to the building of new hospitals.
 
-                    ->   However there is a high duty levied on non essentials such as Vehicles, Spirits and High Speed railways as they are seen as a commodity and not a necessity.
                     _______________________________________________________________________________________________
                     
                     ## DATASET

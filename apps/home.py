@@ -1,11 +1,15 @@
 import streamlit as st
 
 def app():
-    st.title('Home')
+    st.title('Team Members')
 
-    st.write('This is the `home page` of this multi-page app.')
 
     st.markdown("""
+                    `Mayank Kilhor (18BCI0136)`
+
+                    `Sahil Singh (18BCI0167)`
+
+                    `Shelly Mohanty (19BCE0820)`
                     ________________________________________________________
                     # Overview
                     #####

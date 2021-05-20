@@ -5,10 +5,7 @@ from apps import home, demo1, demo2, demo3, demo4, demo5, demo6, demo7 # import 
 app = MultiApp()
 
 st.markdown("""
-# Multi-Page App
-
-This multi-page app is made by Mayank Kilhor
-
+# Indian Budget 2020 Analysis
 """)
 
 # Add all your application here
