@@ -46,5 +46,10 @@ def app():
 
     st.plotly_chart(fig)
 
-    fig2 = px.pie(df2, values='Budget(In Crores)', names='State')
+    fig2 = px.pie(df2, values='Budget(In Crores)', names='State', hole=.5)
     st.plotly_chart(fig2)
+
+    df3=df2.sort_values(by="Budget(In Crores)",ascending=False)
+
+    fig3 = px.bar(df3, x="State", y="Budget(In Crores)", color="Budget(In Crores)", title="India State Budget 2020")
+    st.plotly_chart(fig3)
