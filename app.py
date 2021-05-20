@@ -14,7 +14,7 @@ This multi-page app is made by Mayank Kilhor
 # Add all your application here
 app.add_app("Home", home.app)
 
-app.add_app("Demo1", demo1.app)
+app.add_app("Online Survey", demo1.app)
 app.add_app("Previous Year Analysis with 2020 Budget", demo2.app)
 app.add_app("Budget Speech Text Visualization ", demo3.app)
 app.add_app("Department- wise Budget Expenditure Allocation", demo4.app)
