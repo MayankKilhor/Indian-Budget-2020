@@ -14,12 +14,8 @@ def graph_func(option2):
     data=df
     data = df[df['Ministries/Departments']==str(option2)]
     table = pd.pivot_table(data, values='Budget 2019-2020 Total', index='Detailed Head of Expenditure',columns='Head of Expenditure', fill_value=0)
-    fig = plt.figure(figsize=(12,12))
-    r = sns.heatmap(table, linewidths=1, linecolor='white')
-    r.set_title("Heatmap of "+str(option2))
-    st.write(fig)
 
-    fig2 = go.Figure(data=go.Heatmap(z=table.values, x=table.columns, y=table.index))
-    fig2.layout.height = 1000
-    fig2.layout.width = 1000
-    st.plotly_chart(fig2)
+    fig = go.Figure(data=go.Heatmap(z=table.values, x=table.columns, y=table.index))
+    fig.layout.height = 1000
+    fig.layout.width = 900
+    st.plotly_chart(fig)
