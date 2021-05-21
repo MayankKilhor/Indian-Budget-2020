@@ -1,5 +1,4 @@
-import streamlit as st
-import numpy as np 
+import streamlit as st 
 import pandas as pd
 
 import json
@@ -43,7 +42,7 @@ def app():
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Choropleth Map _ ** - This choropleth map showing  state- wise budget of all the states in India.""")
+                ** _ `Choropleth Map` _ ** - This choropleth map showing  state- wise budget of all the states in India.""")
 
     pio.renderers.default = 'browser'
     india_states = json.load(open("Datasets/states_india.geojson", "r"))
@@ -70,7 +69,7 @@ def app():
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Pie Chart _ ** - This chart is another visual representation of the state wise budget distribution. It is a menu-driven chart which enables us to select the year whose distribution we wish to see.""")
+                ** _ `Pie Chart` _ ** - This chart is another visual representation of the state wise budget distribution. It is a menu-driven chart which enables us to select the year whose distribution we wish to see.""")
 
     fig2 = px.pie(df2, values='Budget(In Crores)', names='State', hole=.5)
     st.plotly_chart(fig2)
@@ -79,7 +78,7 @@ def app():
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Ordered Bar Chart _ ** - We created a bar chart to show the comparison of budgets in different states.""")
+                ** _ `Ordered Bar Chart` _ ** - We created a bar chart to show the comparison of budgets in different states.""")
 
     fig3 = px.bar(df3, x="State", y="Budget(In Crores)", color="Budget(In Crores)", title="India State Budget 2020")
     st.plotly_chart(fig3)

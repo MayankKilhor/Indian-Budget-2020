@@ -50,14 +50,14 @@ def app():
     z = z.reset_index()
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Area Line Chart _ ** - This chart shows the Revenue, Capital and Total Budget distribution in the Healthcare sector over the past three years. We see a steady rise in the amount.""")
+                ** _ `Area Line Chart` _ ** - This chart shows the Revenue, Capital and Total Budget distribution in the Healthcare sector over the past three years. We see a steady rise in the amount.""")
 
     fig = px.area(z, x='index', y=['Revenue', 'Capital', 'Total'])
     st.plotly_chart(fig)
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Pie Chart _ ** -  This Pie Chart explores the various subsections of the Healthcare Department and how the Budget was allocated to each of the departments.""")
+                ** _ `Pie Chart` _ ** -  This Pie Chart explores the various subsections of the Healthcare Department and how the Budget was allocated to each of the departments.""")
 
     variables = st.selectbox("Enter the Column", df.columns[3:])
     df2 = df[['Particulars','Actual 2017-2018 Revenue', 'Budget 2018-2019 Revenue', 'Budget 2019-2020 Revenue','Actual 2017-2018 Capital', 'Budget 2018-2019 Capital', 'Budget 2019-2020 Capital','Actual 2017-2018 Total', 'Budget 2018-2019 Total', 'Budget 2019-2020 Total','Revised 2018-2019 Revenue','Revised 2018-2019 Capital','Revised 2018-2019 Total']].iloc[4:25, :].replace('...', np.NaN)

@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd 
 import plotly.graph_objects as go
 import plotly.express as px
-import plotly.tools as tls
 
 
 def app():
@@ -48,7 +47,7 @@ def app():
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Bar Graph _ ** - This Bar Graph shows how the Union Budget of India has evolved, right from 1941 upto 2021. It also makes predictions on the budget of 2024 based on previous year trends. """)
+                ** _ `Bar Graph` _ ** - This Bar Graph shows how the Union Budget of India has evolved, right from 1941 upto 2021. It also makes predictions on the budget of 2024 based on previous year trends. """)
     
     z = df.transpose().iloc[1:]
     fig = go.Figure()
@@ -71,7 +70,7 @@ def app():
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Line Chart _ ** - This Line chart shows how the Budget has been distributed across various sectors over the last 10 years. The sector-wise distribution of the budget hasn’t changed much over the years.""")  
+                ** _ `Line Chart` _ ** - This Line chart shows how the Budget has been distributed across various sectors over the last 10 years. The sector-wise distribution of the budget hasn’t changed much over the years.""")  
     fig4 = go.Figure()
     z = df.transpose().iloc[1:]
 
@@ -95,7 +94,7 @@ def app():
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Pie Chart _ ** - This chart is another visual representation of the sector wise budget representation of the Union Budget. It is a menu-driven chart which enables us to select the year whose distribution we wish to see.""")  
+                ** _ `Pie Chart` _ ** - This chart is another visual representation of the sector wise budget representation of the Union Budget. It is a menu-driven chart which enables us to select the year whose distribution we wish to see.""")  
 
     variables = st.selectbox("Enter the year", df.columns)
     

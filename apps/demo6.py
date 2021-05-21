@@ -46,7 +46,7 @@ def app():
    
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Line Plot _ ** - This line plot shows the sector- wise distribution of the Budget, with different colours of the line showing the Category of Tax where the money has come from. """)
+                ** _ `Line Plot` _ ** - This line plot shows the sector- wise distribution of the Budget, with different colours of the line showing the Category of Tax where the money has come from. """)
 
     fig = px.line(df2, x="Tax Particular", y="Budget 2020-2021", color='Tax Category')
     fig.layout.height = 700
@@ -55,7 +55,7 @@ def app():
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Scatter Matrix _ ** - This visualization shows the comparison with a scatterplot of the Budget of three years and gives a colour encoding according to the Category of Taxes.""")
+                ** _ `Scatter Matrix` _ ** - This visualization shows the comparison with a scatterplot of the Budget of three years and gives a colour encoding according to the Category of Taxes.""")
 
     fig2 = px.scatter_matrix(df2, dimensions=['Actual 2018-2019', 'Budget 2019-2020', 'Budget 2020-2021'], color="Tax Category")
     fig2.layout.height = 700
@@ -64,7 +64,7 @@ def app():
 
     st.markdown("""
                 ____________________________________________________________________
-                ** _ Stacked Bar chart _ ** - This Stacked Bar Chart  gives the count of each Tax Category with each of the Stacks showing the Tax Particular where it has been derived from.""")
+                ** _ `Stacked Bar chart` _ ** - This Stacked Bar Chart  gives the count of each Tax Category with each of the Stacks showing the Tax Particular where it has been derived from.""")
     fig3 = px.histogram(df2, x="Tax Category", color="Tax Particular")
     fig3.layout.height = 700
     fig3.layout.width = 900

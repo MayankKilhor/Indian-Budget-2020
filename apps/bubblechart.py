@@ -1,10 +1,7 @@
-import numpy as np 
+
 import pandas as pd
 from bubbly.bubbly import bubbleplot 
 import streamlit as st
-
-# from chart_studio.plotly import plot, iplot
-from plotly.offline import init_notebook_mode, iplot
 
 
 df = pd.read_csv('Datasets/Expenditure.csv')
@@ -22,4 +19,4 @@ def func_app():
     figure = bubbleplot(dataset=df2, x_column='Budget 2019-2020 Total', y_column='Revised 2019-2020 Total', 
     bubble_column='Ministries/Departments',x_title="Budget 2019-2020 Total", y_title="Revised 2019-2020 Total",color_column="Ministries/Departments", title='Gapminder Global Indicators', x_logscale=True, y_logscale=True,scale_bubble=1.8, height=650,width=1000)
     st.plotly_chart(figure)
-    # iplot(figure)
+    
