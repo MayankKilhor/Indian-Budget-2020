@@ -12,7 +12,7 @@ ________________________________________________________________________________
 
 ** _ `Bar Graph` _ ** - This Bar Graph shows how the Union Budget of India has evolved, right from 1941 upto 2021. It also makes predictions on the budget of 2024 based on previous year trends.
 
-<img src =" https://github.com/TheRoryWillAim/Web-Visualisation-of-Indian-Budget-2020/blob/main/apps/imgs/m1.1.PNG">
+<img src ="https://github.com/TheRoryWillAim/Web-Visualisation-of-Indian-Budget-2020/blob/main/apps/imgs/m1.1.PNG">
 
 ** _ `Line Chart` _ ** - This Line chart shows how the Budget has been distributed across various sectors over the last 10 years. The sector-wise distribution of the budget hasn’t changed much over the years.
 
