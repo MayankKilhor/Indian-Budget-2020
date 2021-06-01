@@ -18,7 +18,7 @@ We extracted the complete text of her speech and did various visualizations on t
 
 ** _ `Word Cloud` _ ** - This word cloud helps to visualize and summarize all sorts of data which can be obtained from the Budget Speech. For better representation of the data and to make it more visually appealing, we also created a word cloud in the shape of the Indian Map.
 
-<img src ="https://github.com/TheRoryWillAim/Web-Visualisation-of-Indian-Budget-2020/blob/main/apps/imgs/m2.1.PNG">
+<img src ="https://github.com/TheRoryWillAim/Web-Visualisation-of-Indian-Budget-2020/blob/main/apps/imgs/m2.1.png">
 
 ** _ `Bar chart` _ ** - We created a bar chart to show the most frequently used words in the Budget Speech. We see an extremely high usage of the word Tax.
 
