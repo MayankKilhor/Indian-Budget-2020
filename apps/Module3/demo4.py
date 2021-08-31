@@ -2,9 +2,9 @@ import numpy as np
 import pandas as pd
 import streamlit as st 
 import streamlit.components.v1 as components
-from apps import netgraph
-from apps import heatmap
-from apps import bubblechart
+from apps.Module3 import netgraph
+from apps.Module3 import heatmap
+from apps.Module3 import bubblechart
 
 def app():
     st.markdown("""
