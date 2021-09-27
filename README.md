@@ -47,7 +47,7 @@ Based on the visual Idioms used we can infer a trend of the dataset and this inf
 _______________________________________________________________________
 # Datasets Used
 #####
-Most of the datasets used in this project have been obtained from Kaggle or Open Budgets India. For one of the modules, we did a text visualization of the Budget financial Speech by Finance minister Nirmala Sitharaman. In some cases where a direct dataset was not available, we generated our own dataset from websites like wikipedia.
+Most of the datasets used in this project have been obtained from Kaggle or Open Budgets India. For one of the modules, we did a text visualization of the Budget financial Speech of Finance minister Nirmala Sitharaman. In some cases where a direct dataset was not available, we generated our own dataset from websites like wikipedia.
 
 Module 1: [`https://www.kaggle.com/mathurinache/federalbudgetshares19412020`](https://www.kaggle.com/mathurinache/federalbudgetshares19412020)
 
